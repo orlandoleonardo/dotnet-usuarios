@@ -10,16 +10,17 @@ namespace Usuarios.Controllers
     public class UsuariosController : Controller
     {
         //[Route("[controller]/[action]/{data:int}")]
-        public IActionResult Index(int data)
+        public IActionResult Index(double data)
         {
-            var url = Url.Action("Metodo", "Usuarios");
+            var url = Url.Action("Metodo", "Usuarios", new { edad=23, name="Leo"});
             //return View("Index",data);
             return Redirect(url);
         }
 
-        public IActionResult Metodo()
+        public IActionResult Metodo(int edad, String name)
         {
-            return View();
+            var data = $"Nombre {name} Edad {edad}";
+            return View("Index", data);
         }
     }
 }
